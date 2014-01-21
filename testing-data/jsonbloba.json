@@ -1,0 +1,122 @@
+{
+   "fathers":[
+      {
+         "id":0,
+         "married":false,
+         "name":"George Taylor",
+         "sons":null,
+         "daughters":[
+            {
+               "age":29,
+               "name":"Patricia"
+            }
+         ]
+      },
+      {
+         "id":1,
+         "married":true,
+         "name":"Jason Johnson",
+         "sons":null,
+         "daughters":[
+            {
+               "age":3,
+               "name":"Anna"
+            }
+         ]
+      },
+      {
+         "id":2,
+         "married":false,
+         "name":"Paul Moore",
+         "sons":null,
+         "daughters":[
+
+         ]
+      },
+      {
+         "id":3,
+         "married":false,
+         "name":"Larry Hall",
+         "sons":null,
+         "daughters":[
+
+         ]
+      },
+      {
+         "id":4,
+         "married":true,
+         "name":"Eric Robinson",
+         "sons":null,
+         "daughters":[
+            {
+               "age":26,
+               "name":"Linda"
+            }
+         ]
+      },
+      {
+         "id":5,
+         "married":true,
+         "name":"Gary Walker",
+         "sons":null,
+         "daughters":[
+            {
+               "age":9,
+               "name":"Anna"
+            },
+            {
+               "age":2,
+               "name":"Ruth"
+            },
+            {
+               "age":29,
+               "name":"Maria"
+            }
+         ]
+      },
+      {
+         "id":6,
+         "married":true,
+         "name":"Larry Wilson",
+         "sons":null,
+         "daughters":[
+            {
+               "age":3,
+               "name":"Lisa"
+            }
+         ]
+      },
+      {
+         "id":7,
+         "married":true,
+         "name":"Eric Smith",
+         "sons":null,
+         "daughters":[
+            {
+               "age":19,
+               "name":"Sarah"
+            },
+            {
+               "age":30,
+               "name":"Dorothy"
+            }
+         ]
+      },
+      {
+         "id":8,
+         "married":true,
+         "name":"Frank Moore",
+         "sons":null,
+         "daughters":[
+            {
+               "age":28,
+               "name":"Ruth"
+            },
+            {
+               "age":10,
+               "name":"Donna"
+            }
+         ]
+      }
+   ]
+}
