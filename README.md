@@ -13,7 +13,6 @@ jsoncompare.are_same(a, b)
 # Compare ignoring each array's order
 jsoncompare.are_same(a, b, True)
 
-
 ```
 
 ```python
@@ -91,4 +90,5 @@ Actual:
           "field": "Catalog.catalogOwner", 
           "reason": "may not be null"
       }
+  ]
 ```
