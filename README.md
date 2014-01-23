@@ -1,3 +1,8 @@
+##Install
+```bash
+pip install jsoncompare
+```
+
 ##Explanation
 *  Being able to tell whether or not an arbitrarily nested json blob is the same as another blob can hurt your eyes.
 *  Additional complexity comes in when your json array's order doesn't matter.
