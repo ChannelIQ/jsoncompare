@@ -10,7 +10,7 @@ pip install jsoncompare
 
 ##Examples
 ```python
-import jsoncompare
+from jsoncompare import jsoncompare
 
 # Compare respecting each array's order
 jsoncompare.are_same(a, b)
@@ -22,7 +22,7 @@ jsoncompare.are_same(a, b, True)
 
 ```python
 # Getting difference traces
-import jsoncompare
+from jsoncompare import jsoncompare
 
 a = {
     "failureReason" : "Invalid request entity",
