@@ -49,7 +49,7 @@ def _generate_pprint_json(value):
     return json.dumps(value, sort_keys=True, indent=4)
 
 
-def _is_dict_same(a, b):
+def _is_dict_same(a, b, ignore_value_of_keys):
     for key in a:
         if not key in b:
             return False, \
@@ -58,17 +58,17 @@ def _is_dict_same(a, b):
                                       .format(key),
                                   a,
                                   b))
-
-        are_same_flag, stack = _are_same(a[key], b[key])
-        if not are_same_flag:
-            return False, \
-                   stack.append(StackItem('Different values', a[key], b[key]))
+        if not key in ignore_value_of_keys:
+            are_same_flag, stack = _are_same(a[key], b[key], ignore_value_of_keys)
+            if not are_same_flag:
+                return False, \
+                       stack.append(StackItem('Different values', a[key], b[key]))
     return True, Stack()
 
 
-def _is_list_same(a, b):
+def _is_list_same(a, b, ignore_value_of_keys):
     for i in xrange(len(a)):
-        are_same_flag, stack = _are_same(a[i], b[i])
+        are_same_flag, stack = _are_same(a[i], b[i], ignore_value_of_keys)
         if not are_same_flag:
             return False, \
                    stack.append(
@@ -91,7 +91,7 @@ def _bottom_up_sort(unsorted_json):
     else:
         return unsorted_json
 
-def _are_same(a, b):
+def _are_same(a, b, ignore_value_of_keys):
     # Check for None
     if a is None:
         return a == b, Stack()
@@ -119,14 +119,14 @@ def _are_same(a, b):
                               b))
 
     if isinstance(a, dict):
-        return _is_dict_same(a, b)
+        return _is_dict_same(a, b, ignore_value_of_keys)
 
     if isinstance(a, list):
-        return _is_list_same(a, b)
+        return _is_list_same(a, b, ignore_value_of_keys)
 
     return False, Stack().append(StackItem('Unhandled Type: {0}'.format(type(a)), a, b))
 
-def are_same(original_a, original_b, ignore_list_order_recursively=False):
+def are_same(original_a, original_b, ignore_list_order_recursively=False, ignore_value_of_keys=[]):
     a = None
     b = None
     if ignore_list_order_recursively:
@@ -135,7 +135,7 @@ def are_same(original_a, original_b, ignore_list_order_recursively=False):
     else:
         a = original_a
         b = original_b
-    return _are_same(a, b)
+    return _are_same(a, b, ignore_value_of_keys)
 
-def json_are_same(a, b, ignore_list_order_recursively=False):
-    return are_same(json.loads(a), json.loads(b), ignore_list_order_recursively)
+def json_are_same(a, b, ignore_list_order_recursively=False, ignore_value_of_keys=[]):
+    return are_same(json.loads(a), json.loads(b), ignore_list_order_recursively, ignore_value_of_keys)

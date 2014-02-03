@@ -1,6 +1,11 @@
 #!/usr/bin/env python
 
 import unittest
+import sys, os
+
+path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+if not path in sys.path:
+    sys.path.insert(1, path)
 import jsoncompare
 
 class TestJSONCompare(unittest.TestCase):
@@ -41,6 +46,17 @@ class TestJSONCompare(unittest.TestCase):
         ]
         self.assertFalse(jsoncompare.are_same(a, b)[0])
 
+    def test_list_of_hashes_ignore_key(self):
+        a = [
+            {"wtf1": "omg1"},
+            {"wtf2": "omg"}
+        ]
+        b = [
+            {"wtf1": "omg1"},
+            {"wtf2": "omg3"}
+        ]
+        self.assertTrue(jsoncompare.are_same(a, b, True, ["wtf2"])[0])
+
     def test_hash_list_of_hashes_unordered(self):
         a = {
             "wtf": [
@@ -55,7 +71,6 @@ class TestJSONCompare(unittest.TestCase):
             ]
         }
         self.assertTrue(jsoncompare.are_same(a, b, True)[0])
-        print jsoncompare.are_same(a, b, True)[1]
 
     def test_hash_list_of_hashes_unordered_fail(self):
         a = {
