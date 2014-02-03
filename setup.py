@@ -12,12 +12,13 @@ def read_readme(fname):
 
 setup(
     name = 'jsoncompare',
-    version = '0.1.0',
+    version = '0.1.1',
     description = 'Json comparison tool',
     author = 'Daniel Myers',
     author_email = 'dmandroid88@gmail.com',
     url = 'https://github.com/dandroid88/jsoncompare',
-    packages = ['jsoncompare', 'jsoncompare.tests'],
+    packages = ['jsoncompare', 'jsoncompare.test'],
+    test_suite = "jsoncompare.test.test_jsoncompare",
     keywords = 'json comparison compare order',
     long_description = read_readme('README.md')
 )
