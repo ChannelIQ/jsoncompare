@@ -18,6 +18,9 @@ jsoncompare.are_same(a, b)
 # Compare ignoring each array's order
 jsoncompare.are_same(a, b, True)
 
+# Compare ignoring the value of certain keys
+jsoncompare.are_same(a, b, False, ["datetime", "snacktime"])
+
 ```
 
 ```python
