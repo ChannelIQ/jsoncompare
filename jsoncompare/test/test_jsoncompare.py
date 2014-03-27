@@ -251,5 +251,72 @@ class TestJSONCompare(unittest.TestCase):
         b = open("testing-data/jsonblobb.json").read()
         self.assertFalse(jsoncompare.json_are_same(a, b)[0])
 
+    # Test two json that are same size and keys/values match
+    def test_contains_same_size(self):
+        actual = [
+            {"wtf": "omg"},
+            {"wtf1": "omg1"}
+        ]
+        expected = [
+            {"wtf": "omg"},
+            {"wtf1": "omg1"}
+        ]
+        self.assertTrue(jsoncompare.contains(expected, actual)[0])
+
+    # Test two json that are same size but values do not match
+    def test_contains_same_size(self):
+        actual = [
+            {"wtf": "omg"},
+            {"wtf1": "omg1"}
+        ]
+        expected = [
+            {"wtf": "omg"},
+            {"wtf1": "omg999999"}
+        ]
+        self.assertFalse(jsoncompare.contains(expected, actual)[0])
+        #same, error_message = jsoncompare.contains(expected, actual)
+        #assert same, error_message
+
+    # Test two json that are same size but keys do not match
+    def test_contains_same_size(self):
+        actual = [
+            {"wtf": "omg"},
+            {"wtf1": "omg1"}
+        ]
+        expected = [
+            {"wtf": "omg"},
+            {"wtf999": "omg1"}
+        ]
+        self.assertFalse(jsoncompare.contains(expected, actual)[0])
+        #same, error_message = jsoncompare.contains(expected, actual)
+        #assert same, error_message
+	
+    # Test two json where Actual is larger - it can (potentialy) contain all of the expected attributes
+    def test_contains_actual_bigger(self):
+        actual = [
+            {"wtf": "omg"},
+            {"wtf1": "omg1"},
+            {"wtf3": "omg3"}
+        ]
+        expected = [
+            {"wtf": "omg"},
+            {"wtf1": "omg1"}
+        ]
+        self.assertTrue(jsoncompare.contains(expected, actual)[0])
+
+    # Test two josn where Actual is smaller - it can NOT contain all of expected attributes
+    def test_contains_actual_smaller(self):
+        actual = [
+            {"wtf": "omg"},
+            {"wtf1": "omg1"}
+        ]
+        expected = [
+            {"wtf": "omg"},
+            {"wtf1": "omg1"},
+            {"wtf2": "omg2"}
+        ]
+        self.assertFalse(jsoncompare.contains(expected, actual)[0])
+
+
 if __name__ == '__main__':
     unittest.main()
