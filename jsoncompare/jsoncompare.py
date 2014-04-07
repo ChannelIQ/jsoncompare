@@ -154,7 +154,7 @@ def are_same(original_a, original_b, ignore_list_order_recursively=False, ignore
     return _are_same(a, b, ignore_value_of_keys)
 
 
-def contains(expected_original, actual_orginal, ignore_list_order_recursively=False, ignore_value_of_keys=[]):
+def contains(expected_original, actual_original, ignore_list_order_recursively=False, ignore_value_of_keys=[]):
     if ignore_list_order_recursively:
         actual = _bottom_up_sort(actual_original)
         expected = _bottom_up_sort(expected_original)
