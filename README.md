@@ -9,9 +9,9 @@ pip install jsoncompare
 *  For example, you might have a set in Java that you are going to send over the wire as json. It may be represented as a json array but in actuality, you don't care about the order.
 
 ## Recent Changes
-#    Version    Comments
-#    0.1.1      Orginal Version
-#    0.1.2      Adds support for "contains"
+    Version    Comments
+    0.1.1      Orginal Version
+    0.1.2      Adds support for "contains"
 
 ##Examples
 ```python
