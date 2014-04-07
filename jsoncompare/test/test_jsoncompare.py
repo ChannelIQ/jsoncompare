@@ -265,8 +265,20 @@ class TestJSONCompare(unittest.TestCase):
         #same, error_message = jsoncompare.contains(expected, actual)
         #assert same, error_message
 
-    # Test two json that are same size but values do not match
+    # Test two json that are same size and keys/values match with ignore_order
     def test_contains_same_size2(self):
+        actual = [
+            {"wtf": "omg"},
+            {"wtf1": "omg1"}
+        ]
+        expected = [
+            {"wtf": "omg"},
+            {"wtf1": "omg1"}
+        ]
+        self.assertTrue(jsoncompare.contains(expected, actual, True)[0])
+
+    # Test two json that are same size but values do not match
+    def test_contains_same_size3(self):
         actual = [
             {"wtf": "omg"},
             {"wtf1": "omg1"}
@@ -280,7 +292,7 @@ class TestJSONCompare(unittest.TestCase):
         #assert same, error_message
 
     # Test two json that are same size but keys do not match
-    def test_contains_same_size3(self):
+    def test_contains_same_size4(self):
         actual = [
             {"wtf": "omg"},
             {"wtf1": "omg1"}
@@ -290,8 +302,8 @@ class TestJSONCompare(unittest.TestCase):
             {"wtf999": "omg1"}
         ]
         self.assertFalse(jsoncompare.contains(expected, actual)[0])
-        same, error_message = jsoncompare.contains(expected, actual)
-        assert same, error_message
+        #same, error_message = jsoncompare.contains(expected, actual)
+        #assert same, error_message
 	
     # Test two json where Actual is larger - it can (potentialy) contain all of the expected attributes
     def test_contains_actual_bigger(self):
