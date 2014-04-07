@@ -12,7 +12,7 @@ def read_readme(fname):
 
 setup(
     name = 'jsoncompare',
-    version = '0.1.1',
+    version = '0.1.2',
     description = 'Json comparison tool',
     author = 'Daniel Myers',
     author_email = 'dmandroid88@gmail.com',
